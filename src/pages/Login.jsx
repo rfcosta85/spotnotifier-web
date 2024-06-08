@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../App.css';
 
 import { supabase } from '../client';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 function Login({setToken}) {
     let navigate = useNavigate()
@@ -66,17 +66,63 @@ function Login({setToken}) {
       }    
   }
   return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <input type="email" placeholder='Insira o seu email' name='email' onChange={handleChange} />
-        <input type="password" placeholder='Insira a sua palavra-passe' name='password' onChange={handleChange} />
-        <button type='submit'>
-          Login
-        </button>
-      </form>
-      Não possui uma conta? <Link to='/signup'>Registra-se</Link>
+    <div className="flex flex-col items-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md p- ssl:p-6 bg-white shadow-md rounded-lg">
+        <div className="flex justify-center mb-4">
+          <img src="./assets/spotnotifier_logo.png" alt="Logo Spotnotifier" className="h-52 w-auto" />
+        </div>
+        <div className="text-center mb-16">
+          <h1 className="text-xl font-normal font-sans text-blue-light">Bem-vindo ao Spotnotifier</h1>
+        </div>
+  
+        <div className="mb-4">
+          <form onSubmit={handleSubmit} className="space-y-12">
+            <div>
+              <label htmlFor="" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
+               Nome de utilizador
+              </label>
+              <input
+                type="email"
+                placeholder='Insira seu nome de utlizador'
+                name='email'
+                onChange={handleChange}
+                className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl  focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+              <div className='py-4'>
+              <label htmlFor="" className='w-full px-1 py-2  text-blue-dark flex flex-col items-start'>
+                Palavra-passe
+              </label>
+              <input
+                type="password"
+                placeholder='Insira a sua palavra-passe'
+                name='password'
+                onChange={handleChange}
+                className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+              </div>
+            </div>
+            <button
+              type='submit'
+              className="w-full py-2 rounded-xl bg-primary font-sans text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              Entrar
+            </button>
+          </form>
+        </div>
+  
+        <div className="text-center mt-20">
+          <a href="#" className="text-sm font-sans text-blue-light hover:underline">Esqueceu a sua palavra-passe</a>
+        </div>
+  
+        <div className="text-center mt-4 mb-16">
+          <p className="text-sm text-orange">
+            Ainda não é utilizador? <Link to='/signup' className="text-orange font-sans hover:underline">Regista-se</Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
+  
 }
 
 export default Login;
