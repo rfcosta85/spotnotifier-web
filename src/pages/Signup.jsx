@@ -147,20 +147,6 @@ function Signup() {
       </div>
     </div>
   );
-  // return (
-  //   <div className="App">
-  //     <form onSubmit={handleSubmit}>
-  //       <input type="text" placeholder='Insira o seu nome' name='name' onChange={handleChange} />
-  //       <input type="email" placeholder='Insira o seu email' name='email' onChange={handleChange} />
-  //       <input type="password" placeholder='Insira a sua palavra-passe' name='password' onChange={handleChange} />
-  //       <button type='submit'>
-  //         Registrar
-  //       </button>
-  //     </form>
-     
-
-  //   </div>
-  // );
 }
 
 export default Signup;
