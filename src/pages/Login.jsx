@@ -65,6 +65,19 @@ function Login({setToken}) {
           alert(error)
       }    
   }
+
+  async function handleRecoveryPassword(e) {
+    const { error } = await supabase.auth.resetPasswordForEmail(formData.email, {
+      redirectTo: 'http://localhost:3000/recovery-password', // URL correta
+    });
+    
+    if (error) {
+      alert(error.message);
+    } else {
+      alert('Verifique seu email para o link de recuperação de senha.');
+    }
+    
+  }
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p- ssl:p-6 bg-white shadow-md rounded-lg">
@@ -111,7 +124,7 @@ function Login({setToken}) {
         </div>
   
         <div className="text-center mt-20">
-          <a href="#" className="text-sm font-sans text-blue-light hover:underline">Esqueceu a sua palavra-passe</a>
+          <a onClick={handleRecoveryPassword} className="text-sm font-sans text-blue-light hover:underline cursor-pointer">Esqueceu a sua palavra-passe</a>
         </div>
   
         <div className="text-center mt-4 mb-16">
