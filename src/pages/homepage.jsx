@@ -56,7 +56,7 @@ const Homepage = ({token}) => {
     return (
         <div className="relative w-full h-full">
           <LoadScript
-            googleMapsApiKey="AIzaSyDwbdfKlaQHhOoBHx_ClXE77Wq6bVu-MqY"
+            googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
           >
             <GoogleMap
               mapContainerStyle={containerStyle}
@@ -71,10 +71,8 @@ const Homepage = ({token}) => {
             </GoogleMap>
           </LoadScript>
             <div className="absolute top-0 left-0 z-50 p-6 bg-white bg-opacity-75 m-2 rounded-md">
-                {/* <h3>Bem vindo de volta, {token.user.user_metadata.name}</h3>
-                <button onClick={handleLogout} className="mt-2 p-2 bg-blue-500 text-black rounded">Logout</button> */}
                 <div className="flex flex-row items-center gap-6 mb-2">
-                    <RxHamburgerMenu />
+                    <RxHamburgerMenu className="hover:cursor-pointer"/>
                     <h2 className="text-xl font-normal font-sans text-blue-light">Indicações</h2>
                 </div>
                 <div className="flex flex-col gap-4">
@@ -104,7 +102,7 @@ const Homepage = ({token}) => {
 
             <div className="absolute top-0 right-1 z-50 p-6 bg-white bg-opacity-75 m-2 rounded-md">
                 <div className="flex flex-row items-center gap-6 mb-2">
-                    <RxHamburgerMenu />
+                    <RxHamburgerMenu className="hover:cursor-pointer"/>
                     <h3>{token.user.user_metadata.name}</h3>
                     <button onClick={handleLogout} className="text-blue-dark">Logout</button>                
                 </div>
