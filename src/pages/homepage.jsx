@@ -1,12 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import MainMenuModal from "./modals/mainMenuModal";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { ImLocation } from "react-icons/im";
 import { ImLocation2 } from "react-icons/im";
 import { useState } from 'react';
-
-
 
 const containerStyle = {
     width: '100%',
@@ -19,6 +18,7 @@ const containerStyle = {
   };  
   
 const Homepage = ({token}) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({
         destiny: '',
         arrival: ''
@@ -46,12 +46,14 @@ const Homepage = ({token}) => {
         sessionStorage.removeItem('token')
         navigate('/')
     }
-    // return (
-    //     <div>
-    //         <h3>Bem vindo de volta, {token.user.user_metadata.name}</h3>
-    //         <button onClick={handleLogout}>Logout</button>
-    //     </div>
-    // )
+    
+    function handleMenuClick() {
+      setIsModalOpen(true);
+  }
+
+  function handleCloseModal() {
+      setIsModalOpen(false);
+  }
 
     return (
         <div className="relative w-full h-full">
@@ -102,11 +104,20 @@ const Homepage = ({token}) => {
 
             <div className="absolute top-0 right-1 z-50 p-6 bg-white bg-opacity-75 m-2 rounded-md">
                 <div className="flex flex-row items-center gap-6 mb-2">
-                    <RxHamburgerMenu className="hover:cursor-pointer"/>
+                    <RxHamburgerMenu className="hover:cursor-pointer" onClick={handleMenuClick}/>
                     <h3>{token.user.user_metadata.name}</h3>
                     <button onClick={handleLogout} className="text-blue-dark">Logout</button>                
                 </div>
             </div>
+
+            {isModalOpen && (
+                <div className="absolute inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                    <div className="bg-white rounded-lg p-6">
+                        <button onClick={handleCloseModal} className="absolute top-0 right-0 m-4 text-gray-500 hover:text-gray-700">&times;</button>
+                        <MainMenuModal />
+                    </div>
+                </div>
+            )}
         </div>
       )
 }
