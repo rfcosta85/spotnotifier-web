@@ -2,8 +2,8 @@ import { ChevronDownIcon, InformationCircleIcon, LockClosedIcon, PhoneIcon, Play
 
 
 const solutions = [
-  { name: 'Perfil', href: '#', icon: UsersIcon },
-  { name: 'Sobre nós', href: '#', icon: InformationCircleIcon },
+  { name: 'Perfil', href: '/profile', icon: UsersIcon },
+  { name: 'Sobre nós', href: '/about-us', icon: InformationCircleIcon },
 ]
 const callsToAction = [
   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },

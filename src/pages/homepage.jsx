@@ -50,28 +50,28 @@ const Homepage = ({token}) => {
     
     function handleMenuClick() {
       setIsModalOpen(true);
-  }
-
-  function handleCloseModal() {
-      setIsModalOpen(false);
-  }
-
-  function handleClickOutside(event) {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
-        handleCloseModal();
     }
-}
 
-useEffect(() => {
-  if (isModalOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-  } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-  }
-  return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-  };
-}, [isModalOpen]);
+    function handleCloseModal() {
+        setIsModalOpen(false);
+    }
+
+    function handleClickOutside(event) {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+          handleCloseModal();
+      }
+    }
+
+  useEffect(() => {
+    if (isModalOpen) {
+        document.addEventListener('mousedown', handleClickOutside);
+    } else {
+        document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isModalOpen]);
 
     return (
         <div className="relative w-full h-full">

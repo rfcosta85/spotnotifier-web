@@ -2,6 +2,8 @@ import './App.css';
 import { SignUp, Login, Homepage, RecoveryPassword } from './pages';
 import {Routes, Route} from 'react-router-dom'
 import { useEffect, useState } from 'react';
+import Profile from './pages/Profile';
+import About from './pages/AboutUs';
 
 function App() {
 
@@ -34,6 +36,9 @@ function App() {
         <Route path={'/signup'} element={<SignUp />}/>
         <Route path={'/'} element={<Login setToken={setToken}/>}/>
         <Route path={'/recovery-password'} element={<RecoveryPassword/>}/>
+        <Route path={'/profile'} element={<Profile setToken={setToken}/>}/>
+        <Route path={'/about-us'} element={<About/>}/>
+        {/* <Route path={'/profile'} element={<Profile setToken={setToken}/>}/> */}
         {token? <Route path={'/homepage'} element={<Homepage token={token}/>}/>: ""}
       </Routes>      
     </div>
