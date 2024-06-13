@@ -2,10 +2,10 @@ import { useState } from 'react';
 import '../App.css';
 
 import { supabase } from '../client';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Signup() {
-
+  let navigate = useNavigate()
   const [formData, setFormData] = useState({
       name: '',
       email: '',
@@ -63,7 +63,8 @@ function Signup() {
             }
           }
         })
-      //   alert('Check your email for verification link')
+        navigate('/')
+        alert('Verifique a sua caixa de email e valide a sua conta')
       } catch (error) {
           alert(error)
       }    
