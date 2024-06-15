@@ -4,7 +4,7 @@ import '../App.css';
 import { supabase } from '../client';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
-function EditAddress({setToken}) {
+function CreateSpot({setToken}) {
     let navigate = useNavigate()
   const [formData, setFormData] = useState({
       email: '',
@@ -127,16 +127,29 @@ function EditAddress({setToken}) {
                 placeholder='Insira a sua cidade'
                 name='city'
                 onChange={handleChange}
+                className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl  focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>   
+
+            <div className=''>
+              <label htmlFor="" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
+               Quantidade de vagas
+              </label>
+              <input
+                type="text"
+                placeholder='Insira a quantidade de vagas'
+                name='city'
+                onChange={handleChange}
                 className="w-full mb-32 px-3 py-2 border font-sans border-blue-dark rounded-xl  focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
-            </div>
+            </div>         
 
             <button
               type='submit'
               className="w-full py-2 rounded-xl bg-primary font-sans text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 
                 focus:ring-indigo-500"
             >
-              Guardar morada
+              Guardar vaga
             </button>
           </form>
         </div>
@@ -146,4 +159,4 @@ function EditAddress({setToken}) {
   
 }
 
-export default EditAddress;
+export default CreateSpot;

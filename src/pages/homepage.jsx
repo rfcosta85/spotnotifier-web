@@ -147,9 +147,11 @@ const Homepage = ({token}) => {
                     <h2 className="text-xl font-semibold mb-4">Spotnotifier</h2>
                     <ul className="space-y-2">
                         <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">
-                          <a href="/perfil">Perfil</a>
+                          <a href="/profile">Perfil</a>
                         </li>
-                        <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">Registo de vaga</li>
+                        <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">
+                          <a href="/create-spot">Registo de vaga</a>
+                        </li>
                         <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">Registo de utilizador</li>
                     </ul>
                 </div>
