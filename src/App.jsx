@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import About from './pages/AboutUs';
 import ChangeProfile from './pages/ChangeProfile';
 import EditImage from './pages/EditImage';
+import EditEmail from './pages/EditEmail';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
         <Route path={'/profile'} element={<Profile setToken={setToken}/>}/>
         <Route path={'/edit-profile'} element={<ChangeProfile setToken={setToken}/>}/>
         <Route path={'/edit-image'} element={<EditImage/>} setToken={setToken}/>
+        <Route path={'/edit-email'} element={<EditEmail/>} setToken={setToken} />
         <Route path={'/about-us'} element={<About/>} setToken={setToken}/>
         {token? <Route path={'/homepage'} element={<Homepage token={token}/>}/>: ""}
       </Routes>      
