@@ -52,7 +52,7 @@ function EditEmail({setToken}) {
   async function handleSubmit(e) {
     e.preventDefault()
     try {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.updateUser({
           email: formData.email,
         })
         if (error) throw error
