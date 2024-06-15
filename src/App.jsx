@@ -8,6 +8,7 @@ import ChangeProfile from './pages/ChangeProfile';
 import EditImage from './pages/EditImage';
 import EditEmail from './pages/EditEmail';
 import EditAddress from './pages/EditAddress';
+import EditPhone from './pages/EditPhone';
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
     <div className="App">
       {/* Cria a lógica de roteamento do projeto */}
       <Routes>
-        <Route path={'/signup'} element={<SignUp />}/>
+        <Route path={'/signup'} element={<SignUp/>}/>
         <Route path={'/'} element={<Login setToken={setToken}/>}/>
         <Route path={'/recovery-password'} element={<RecoveryPassword/>}/>
         <Route path={'/profile'} element={<Profile setToken={setToken}/>}/>
@@ -45,6 +46,7 @@ function App() {
         <Route path={'/edit-image'} element={<EditImage/>} setToken={setToken}/>
         <Route path={'/edit-email'} element={<EditEmail/>} setToken={setToken} />
         <Route path={'/edit-address'} element={<EditAddress/>} setToken={setToken}/>
+        <Route path={'/edit-phone'} element={<EditPhone/>} setToken={setToken}/>
         <Route path={'/about-us'} element={<About/>} setToken={setToken}/>
         {token? <Route path={'/homepage'} element={<Homepage token={token}/>}/>: ""}
       </Routes>      
