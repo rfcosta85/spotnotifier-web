@@ -7,9 +7,10 @@ import { Link, useNavigate } from 'react-router-dom';
 function CreateAdminUser() {
   let navigate = useNavigate()
   const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-      password: ''
+      firstName: '',
+      lastName: '',
+      role: '',
+      password: '',
   })
 
   console.log(formData)
@@ -60,13 +61,31 @@ function CreateAdminUser() {
           options: {
             data: {
               name: formData.name,
+              
             }
           }
-        })
+        });
+
+        if (error) {
+          throw error;
+        }
+        const { user, error: insertError} = await supabase
+          .from('users')
+          .insert([
+            {
+              name: `${formData.firstName} ${formData.lastName}`,
+              email: formData.email,
+              role: 2,
+              hash_password: formData.password
+            }
+          ]);
+          if (insertError) {
+            throw insertError
+          }
         navigate('/')
         alert('Verifique a sua caixa de email e valide a sua conta')
       } catch (error) {
-          alert(error)
+          alert(error.message || 'Erro ao registrar usuário')
       }    
       
   }
@@ -91,24 +110,26 @@ function CreateAdminUser() {
         <div className="mb-12">
           <form onSubmit={handleSubmit} className="space-y-12">
             <div>
-            <label htmlFor="" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
+            <label htmlFor="firstName" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
                Primeiro Nome
               </label>
               <input
                 type="text"
                 placeholder='Insira o primeiro nome'
-                name='email'
+                name='firstName'
+                value={formData.firstName}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl  focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
 
-              <label htmlFor="" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
+              <label htmlFor="lastName" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
                 Último Nome
               </label>
               <input
                 type="text"
                 placeholder='Insira o último nome'
-                name='email'
+                name='lastName'
+                value={formData.lastName}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl  focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
@@ -119,20 +140,35 @@ function CreateAdminUser() {
                 type="email"
                 placeholder='Insira o seu Email'
                 name='email'
+                value={formData.email}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl  focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
-              <div className='py-4'>
-              <label htmlFor="" className='w-full px-1 py-2  text-blue-dark flex flex-col items-start'>
-                Posição
+
+              <label htmlFor="" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
+                Password
               </label>
               <input
                 type="password"
-                placeholder='Insira a posição do colaborador'
+                placeholder='Insira o seu Password'
                 name='password'
+                value={formData.password}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl  focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
+              
+              <div className='py-4'>
+                <label htmlFor="role" className='w-full px-1 py-2  text-blue-dark flex flex-col items-start'>
+                  Posição
+                </label>
+                <input
+                  type="number"
+                  placeholder='Insira a posição do colaborador'
+                  name='role'
+                  value={formData.role}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
               </div>
             </div>
             <button
