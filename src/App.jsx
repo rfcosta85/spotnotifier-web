@@ -12,6 +12,8 @@ import EditPhone from './pages/EditPhone';
 import Contacts from './pages/Contacts';
 import CreateSpot from './pages/CreateSpot';
 import CreateAdminUser from './pages/CreateAdminUser';
+import SpotAdmin from './pages/SpotAdmin';
+import ColaboratorsAdmin from './pages/ColaboratorsAdmin';
 
 function App() {
 
@@ -54,6 +56,8 @@ function App() {
         <Route path={'/contacts'} element={<Contacts/>} setToken={setToken} />
         <Route path={'/create-spot'} element={<CreateSpot/>} setToken={setToken}/>
         <Route path={'/create-colaborator'} element={<CreateAdminUser/>} setToken={setToken}/>
+        <Route path={'/spot-admin'} element={<SpotAdmin/>} setToken={setToken}/>
+        <Route path={'/colaboratos-admin'} element={<ColaboratorsAdmin/>} setToken={setToken}/>
         {token? <Route path={'/homepage'} element={<Homepage token={token}/>}/>: ""}
       </Routes>      
     </div>

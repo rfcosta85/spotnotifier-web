@@ -155,6 +155,12 @@ const Homepage = ({token}) => {
                         <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">
                           <a href="/create-colaborator">Registo de utilizador</a>
                         </li>
+                        <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">
+                          <a href="/spot-admin">Gestão de vaga</a>
+                        </li>
+                        <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">
+                          <a href="/colaboratos-admin">Gestão de utilizador</a>
+                        </li>
                     </ul>
                 </div>
             </div>
