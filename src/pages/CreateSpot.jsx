@@ -5,12 +5,12 @@ import { supabase } from '../client';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 function CreateSpot({setToken}) {
-    let navigate = useNavigate()
   const [formData, setFormData] = useState({
-      email: '',
+      address: '',
+      postCode: '',
+      city: '',
+      slots: ''
   })
-
-  console.log(formData)
 
   /**
  * handleChange - Função para atualizar o estado do formulário com base nas alterações nos campos de entrada.
@@ -51,31 +51,38 @@ function CreateSpot({setToken}) {
  */
   async function handleSubmit(e) {
     e.preventDefault()
-    try {
-        const { data, error } = await supabase.auth.updateUser({
-          email: formData.email,
-        })
-        if (error) throw error
-        setToken(data)
-        navigate('/homepage')
-        console.log(data);
-      } catch (error) {
-          alert(error)
-      }    
-  }
+    const user = supabase.auth.getSession();
 
-  async function handleRecoveryPassword(e) {
-    const { error } = await supabase.auth.resetPasswordForEmail(formData.email, {
-      redirectTo: 'http://localhost:3000/recovery-password', // URL correta
-    });
-    
-    if (error) {
-      alert(error.message);
-    } else {
-      alert('Verifique seu email para o link de recuperação de senha.');
+    if (!user) {
+        alert('Você precisa estar autenticado para realizar esta ação');
+        return;
     }
-    
-  }
+
+    try {
+        const { data, error } = await supabase.from('spot').insert([
+            {
+                address: formData.address,
+                postCode: formData.postCode,
+                city: formData.city,
+                slots: formData.slots
+            }
+        ])
+        if (error) throw error
+        // setToken(data)
+        // navigate('/homepage')
+        alert('Vaga criada com sucesso!')
+        console.log(data);
+        // Limpar o formulário após a submissão
+        setFormData({
+            address: '',
+            postCode: '',
+            city: '',
+            slots:''
+        });
+      } catch (error) {
+          alert(error.message)
+      }    
+  }  
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100">
         <div className="w-96 mt-6 h-6">
@@ -93,52 +100,56 @@ function CreateSpot({setToken}) {
         <div className="mb-16">
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className=''>
-              <label htmlFor="" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
+              <label htmlFor="address" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
                Morada
               </label>
               <input
-                type="email"
+                type="text"
                 placeholder='Insira a sua morada'
-                name='email'
+                name='address'
+                value={formData.address}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl  focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
             <div className=''>
-              <label htmlFor="" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
+              <label htmlFor="postCode" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
                Código Postal
               </label>
               <input
                 type="text"
                 placeholder='Insira o seu código postal'
                 name='postCode'
+                value={formData.postCode}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl  focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
             <div className=''>
-              <label htmlFor="" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
+              <label htmlFor="city" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
                Cidade
               </label>
               <input
                 type="text"
                 placeholder='Insira a sua cidade'
                 name='city'
+                value={formData.city}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border font-sans border-blue-dark rounded-xl  focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>   
 
             <div className=''>
-              <label htmlFor="" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
+              <label htmlFor="slots" className='w-full px-1 py-2 text-blue-dark flex flex-col items-start'>
                Quantidade de vagas
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder='Insira a quantidade de vagas'
-                name='city'
+                name='slots'
+                value={formData.slots}
                 onChange={handleChange}
                 className="w-full mb-32 px-3 py-2 border font-sans border-blue-dark rounded-xl  focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
@@ -146,8 +157,8 @@ function CreateSpot({setToken}) {
 
             <button
               type='submit'
-              className="w-full py-2 rounded-xl bg-primary font-sans text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 
-                focus:ring-indigo-500"
+              className="w-full py-2 rounded-xl bg-primary font-sans text-white hover:bg-indigo-700 focus:outline-none 
+                focus:ring-2 focus:ring-indigo-500"
             >
               Guardar vaga
             </button>
