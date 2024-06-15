@@ -7,11 +7,18 @@ function Profile () {
     function handleChangeProfile() {
         navigate('/edit-profile')
     }
-
     return(
         <div className="flex flex-col items-center min-h-screen bg-gray-lightest">
+            <div className="w-96 mt-6 h-3">
+                <a href='/homepage'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} 
+                        stroke="#E25E3E" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                    </svg>
+                </a>
+            </div>   
             <div className="flex flex-col items-center h-full">
-                <div className="flex gap-6 mt-16">
+                <div className="flex gap-6 mt-0">
                     <div className="flex justify-center mb-4">
                         <img src="./assets/spotnotifier_logo.png" 
                         alt="Logo Spotnotifier" className="h-52 w-auto" />

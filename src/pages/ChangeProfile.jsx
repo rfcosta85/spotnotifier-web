@@ -4,8 +4,16 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 function ChangeProfile () {
     return(
         <div className="flex flex-col items-center min-h-screen bg-gray-lightest">
+            <div className="w-96 mt-6 h-3">
+                <a href='/profile'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} 
+                        stroke="#E25E3E" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                    </svg>
+                </a>
+            </div>
             <div className="flex flex-col items-center h-full">
-                <div className="flex gap-6 mt-16">
+                <div className="flex gap-6 mt-0">
                     <div className="flex justify-center mb-4">
                         <img src="./assets/spotnotifier_logo.png" 
                         alt="Logo Spotnotifier" className="h-52 w-auto" />
@@ -45,7 +53,7 @@ function ChangeProfile () {
                       d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                     </svg>
 
-                    <a href='/' className="text-blue-dark w-52">
+                    <a href='/edit-image' className="text-blue-dark w-52">
                         Alterar imagem
                     </a>
                 </div>
