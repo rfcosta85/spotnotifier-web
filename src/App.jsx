@@ -9,6 +9,7 @@ import EditImage from './pages/EditImage';
 import EditEmail from './pages/EditEmail';
 import EditAddress from './pages/EditAddress';
 import EditPhone from './pages/EditPhone';
+import Contacts from './pages/Contacts';
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
         <Route path={'/edit-address'} element={<EditAddress/>} setToken={setToken}/>
         <Route path={'/edit-phone'} element={<EditPhone/>} setToken={setToken}/>
         <Route path={'/about-us'} element={<About/>} setToken={setToken}/>
+        <Route path={'/contacts'} element={<Contacts/>} setToken={setToken} />
         {token? <Route path={'/homepage'} element={<Homepage token={token}/>}/>: ""}
       </Routes>      
     </div>
