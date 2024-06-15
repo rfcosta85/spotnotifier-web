@@ -28,7 +28,7 @@ function Profile () {
             <div className="flex gap-4 items-center w-80">
                 <img src="./assets/human-icon.png"/>
                 <div className="flex flex-col gap-2">
-                    <p className="text-gray-mostDark font-sans font-bold text-sm">
+                    <p className="text-blue-dark font-sans font-bold text-sm">
                         Nome
                     </p>
 
@@ -105,9 +105,9 @@ function Profile () {
                     <path strokeLinecap="round" strokeLinejoin="round" 
                     d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                 </svg>
-                <p className="text-blue-dark w-64">
+                <a href='/about-us' className="text-blue-dark w-64">
                     Sobre
-                </p>
+                </a>
             </div>
 
             </div>            
