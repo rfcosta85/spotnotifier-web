@@ -142,11 +142,13 @@ const Homepage = ({token}) => {
                 </div>
             )}
              {/* Sidebar */}
-             <div className={`fixed inset-y-0 left-0 w-72 bg-white shadow-lg transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out z-50`}>
+             <div className={`fixed inset-y-0 left-0 w-72 bg-white shadow-lg transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out z-50`} onClick={(e) => e.stopPropagation()}>
                 <div className="p-6">
                     <h2 className="text-xl font-semibold mb-4">Spotnotifier</h2>
                     <ul className="space-y-2">
-                        <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">Perfil</li>
+                        <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">
+                          <a href="/perfil">Perfil</a>
+                        </li>
                         <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">Registo de vaga</li>
                         <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">Registo de utilizador</li>
                     </ul>
@@ -154,7 +156,7 @@ const Homepage = ({token}) => {
             </div>
 
             {isSidebarOpen && (
-                <div className="fixed inset-0 z-50 bg-black bg-opacity-50" onClick={handleSidebarToggle}></div>
+                <div className="fixed inset-0 z-40 bg-black bg-opacity-50" onClick={handleSidebarToggle}></div>
             )}
         </div>
       );
