@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 function Profile () {
+    let navigate = useNavigate();
+
+    function handleChangeProfile() {
+        navigate('/edit-profile')
+    }
+
     return(
         <div className="flex flex-col items-center min-h-screen bg-gray-lightest">
             <div className="flex flex-col items-center h-full">
@@ -21,6 +27,7 @@ function Profile () {
 
                     <button
                       type='submit'
+                      onClick={handleChangeProfile}
                       className="w-32 h-6 rounded-xl bg-primary font-sans
                        text-white hover:bg-indigo-700 
                        focus:outline-none focus:ring-2 focus:ring-indigo-500"
