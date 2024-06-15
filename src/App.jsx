@@ -11,6 +11,7 @@ import EditAddress from './pages/EditAddress';
 import EditPhone from './pages/EditPhone';
 import Contacts from './pages/Contacts';
 import CreateSpot from './pages/CreateSpot';
+import CreateAdminUser from './pages/CreateAdminUser';
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
         <Route path={'/about-us'} element={<About/>} setToken={setToken}/>
         <Route path={'/contacts'} element={<Contacts/>} setToken={setToken} />
         <Route path={'/create-spot'} element={<CreateSpot/>} setToken={setToken}/>
+        <Route path={'/create-colaborator'} element={<CreateAdminUser/>} setToken={setToken}/>
         {token? <Route path={'/homepage'} element={<Homepage token={token}/>}/>: ""}
       </Routes>      
     </div>
