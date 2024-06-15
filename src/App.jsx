@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Profile from './pages/Profile';
 import About from './pages/AboutUs';
 import ChangeProfile from './pages/ChangeProfile';
+import EditImage from './pages/EditImage';
 
 function App() {
 
@@ -39,7 +40,8 @@ function App() {
         <Route path={'/recovery-password'} element={<RecoveryPassword/>}/>
         <Route path={'/profile'} element={<Profile setToken={setToken}/>}/>
         <Route path={'/edit-profile'} element={<ChangeProfile setToken={setToken}/>}/>
-        <Route path={'/about-us'} element={<About/>}/>
+        <Route path={'/edit-image'} element={<EditImage/>} setToken={setToken}/>
+        <Route path={'/about-us'} element={<About/>} setToken={setToken}/>
         {token? <Route path={'/homepage'} element={<Homepage token={token}/>}/>: ""}
       </Routes>      
     </div>
