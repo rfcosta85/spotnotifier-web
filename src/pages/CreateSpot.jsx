@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../App.css';
 
 import { supabase } from '../client';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 function CreateSpot({setToken}) {
   const [formData, setFormData] = useState({
@@ -54,7 +54,8 @@ function CreateSpot({setToken}) {
     const user = supabase.auth.getSession();
 
     if (!user) {
-        alert('Você precisa estar autenticado para realizar esta ação');
+        toast.error('Você precisa estar autenticado para realizar esta ação')
+        // alert('Você precisa estar autenticado para realizar esta ação');
         return;
     }
 
@@ -71,6 +72,9 @@ function CreateSpot({setToken}) {
         // setToken(data)
         // navigate('/homepage')
         alert('Vaga criada com sucesso!')
+        // toast.success("Vaga criada com sucesso!", {
+        //     position: "bottom-left"
+        // })
         console.log(data);
         // Limpar o formulário após a submissão
         setFormData({
@@ -84,7 +88,8 @@ function CreateSpot({setToken}) {
       }    
   }  
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center min-h-screen bg-gray-100">  
+             
         <div className="w-96 mt-6 h-6">
                 <a href='/profile'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} 
