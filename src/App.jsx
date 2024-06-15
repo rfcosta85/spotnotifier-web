@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import Profile from './pages/Profile';
 import About from './pages/AboutUs';
+import ChangeProfile from './pages/ChangeProfile';
 
 function App() {
 
@@ -37,8 +38,8 @@ function App() {
         <Route path={'/'} element={<Login setToken={setToken}/>}/>
         <Route path={'/recovery-password'} element={<RecoveryPassword/>}/>
         <Route path={'/profile'} element={<Profile setToken={setToken}/>}/>
+        <Route path={'/edit-profile'} element={<ChangeProfile setToken={setToken}/>}/>
         <Route path={'/about-us'} element={<About/>}/>
-        {/* <Route path={'/profile'} element={<Profile setToken={setToken}/>}/> */}
         {token? <Route path={'/homepage'} element={<Homepage token={token}/>}/>: ""}
       </Routes>      
     </div>
