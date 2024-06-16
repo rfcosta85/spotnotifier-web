@@ -4,7 +4,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 function ChangeProfile () {
     return(
         <div className="flex flex-col items-center min-h-screen bg-gray-lightest">
-            <div className="w-96 mt-6 h-3">
+            <div className="w-96 mt-6 h-6">
                 <a href='/profile'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} 
                         stroke="#E25E3E" className="size-6">
@@ -12,6 +12,8 @@ function ChangeProfile () {
                     </svg>
                 </a>
             </div>
+            <div className="w-full max-w-md p- ssl:p-6 bg-white shadow-md rounded-lg">
+
             <div className="flex flex-col items-center h-full">
                 <div className="flex gap-6 mt-0">
                     <div className="flex justify-center mb-4">
@@ -92,7 +94,7 @@ function ChangeProfile () {
 
              <div className="border-b border-[#0C5475] w-96 mt-6"></div>
 
-            <div className="flex gap-2 mt-5">
+            <div className="flex gap-2 mt-5 mb-16">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" 
                     viewBox="0 0 24 24" strokeWidth={1.5} 
                     stroke="#E25E3E" className="size-6">
@@ -104,7 +106,9 @@ function ChangeProfile () {
                 </a>
             </div>
 
-            </div>            
+            </div>  
+
+            </div>                      
         </div>
     );
 }
