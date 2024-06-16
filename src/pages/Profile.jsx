@@ -8,15 +8,16 @@ function Profile () {
         navigate('/edit-profile')
     }
     return(
-        <div className="flex flex-col items-center min-h-screen bg-gray-lightest">
-            <div className="w-96 mt-6 h-3">
+        <div className="flex flex-col items-center min-h-screen bg-gray-100">
+            <div className="w-96 mt-6 h-6">
                 <a href='/homepage'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} 
                         stroke="#E25E3E" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                     </svg>
                 </a>
-            </div>   
+            </div> 
+            <div className="w-full max-w-md p- ssl:p-6 bg-white shadow-md rounded-lg">
             <div className="flex flex-col items-center h-full">
                 <div className="flex gap-6 mt-0">
                     <div className="flex justify-center mb-4">
@@ -98,7 +99,7 @@ function Profile () {
                         Contactos
                     </a>
              </div>
-            <div className="flex gap-2 mt-4">
+            <div className="flex gap-2 mt-4 mb-16">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" 
                     viewBox="0 0 24 24" strokeWidth={1.5} stroke="#E25E3E" 
                     className="size-6">
@@ -110,7 +111,8 @@ function Profile () {
                 </a>
             </div>
 
-            </div>            
+            </div>   
+            </div>                     
         </div>
     );
 }

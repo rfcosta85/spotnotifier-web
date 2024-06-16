@@ -52,7 +52,7 @@ function SpotAdmin() {
                         alt="Logo Spotnotifier" className="h-52 w-auto" />
                     </a>
                 </div>                   
-        </div>
+            </div>
         </div>
       <h1 className="text-2xl text-blue-light font-semibold mb-4">Gestão Vagas</h1>
 
