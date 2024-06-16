@@ -75,7 +75,6 @@ function CreateSpot({setToken}) {
         // toast.success("Vaga criada com sucesso!", {
         //     position: "bottom-left"
         // })
-        console.log(data);
         // Limpar o formulário após a submissão
         setFormData({
             address: '',

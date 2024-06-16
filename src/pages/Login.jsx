@@ -11,7 +11,6 @@ function Login({setToken}) {
       password: ''
   })
 
-  console.log(formData)
 
   /**
  * handleChange - Função para atualizar o estado do formulário com base nas alterações nos campos de entrada.
@@ -60,7 +59,6 @@ function Login({setToken}) {
         if (error) throw error
         setToken(data)
         navigate('/homepage')
-        console.log(data);
       } catch (error) {
           alert(error)
       }    
