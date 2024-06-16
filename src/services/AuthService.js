@@ -34,3 +34,7 @@ export async function updatePassword(password) {
     throw error;
   }
 }
+
+export function logout() {
+  sessionStorage.removeItem('token');
+}
