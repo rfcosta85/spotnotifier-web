@@ -28,29 +28,54 @@ const Homepage = ({ token }) => {
     }));
   }
 
+  /**
+ * Logs out the user by calling the logout function and navigates to the homepage.
+ * @function handleLogout
+ */
   function handleLogout() {
     logout();
     navigate('/');
   }
 
+  /**
+ * Sets the state to open the modal.
+ * @function handleMenuClick
+ */
   function handleMenuClick() {
     setIsModalOpen(true);
   }
 
+  /**
+ * Toggles the sidebar open or closed.
+ * @function handleSidebarToggle
+ */
   function handleSidebarToggle() {
     setIsSidebarOpen(!isSidebarOpen);
   }
 
+  /**
+ * Sets the state to close the modal.
+ * @function handleCloseModal
+ */
   function handleCloseModal() {
     setIsModalOpen(false);
   }
 
+  /**
+ * Closes the modal if a click event occurs outside of the modal.
+ * @function handleClickOutside
+ * @param {Object} event - The click event object.
+ */
   function handleClickOutside(event) {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
       handleCloseModal();
     }
   }
 
+  /**
+ * Registers or unregisters a click event listener based on the state of isModalOpen.
+ * @function useEffect
+ */
   useEffect(() => {
     if (isModalOpen) {
       document.addEventListener('mousedown', handleClickOutside);

@@ -17,6 +17,12 @@ function ColaboratorsAdmin() {
     fetchUser();
   }, [userId]);
 
+  /**
+ * Fetches user data from Supabase API based on userId and updates the form data state.
+ * @async
+ * @function fetchUser
+ * @throws {Error} Throws an error if there's an issue fetching user data.
+ */
   async function fetchUser() {
     try {
       const { data, error } = await supabase
@@ -37,6 +43,11 @@ function ColaboratorsAdmin() {
     }
   }
 
+  /**
+ * Updates the form data state based on input change events.
+ * @function handleChange
+ * @param {Object} event - The event object containing the input's name and value.
+ */
   function handleChange(event) {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -45,6 +56,13 @@ function ColaboratorsAdmin() {
     }));
   }
 
+  /**
+ * Handles form submission by updating user data in the database.
+ * @async
+ * @function handleSubmit
+ * @param {Object} e - The form submit event object.
+ * @throws {Error} Throws an error if there's an issue updating user data.
+ */
   async function handleSubmit(e) {
     e.preventDefault();
     try {
