@@ -18,6 +18,7 @@ const containerStyle = {
   };  
   
 const Homepage = ({token}) => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const modalRef = useRef(null);
     const [formData, setFormData] = useState({
@@ -50,6 +51,10 @@ const Homepage = ({token}) => {
     
     function handleMenuClick() {
       setIsModalOpen(true);
+    }
+
+    function handleSidebarToggle() {
+      setIsSidebarOpen(!isSidebarOpen);
     }
 
     function handleCloseModal() {
@@ -92,7 +97,7 @@ const Homepage = ({token}) => {
           </LoadScript>
             <div className="absolute top-2 left-2 z-50 p-6 bg-white bg-opacity-75 m-2 rounded-md">
                 <div className="flex flex-row items-center gap-6 mb-2">
-                    <RxHamburgerMenu className="hover:cursor-pointer"/>
+                    <RxHamburgerMenu className="hover:cursor-pointer" onClick={handleSidebarToggle}/>
                     <h2 className="text-xl font-normal font-sans text-blue-light">Indicações</h2>
                 </div>
                 <div className="flex flex-col gap-4">
@@ -136,8 +141,35 @@ const Homepage = ({token}) => {
                     </div>
                 </div>
             )}
+             {/* Sidebar */}
+             <div className={`fixed inset-y-0 left-0 w-72 bg-white shadow-lg transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out z-50`} onClick={(e) => e.stopPropagation()}>
+                <div className="p-6">
+                    <h2 className="text-xl font-semibold mb-4">Spotnotifier</h2>
+                    <ul className="space-y-2">
+                        <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">
+                          <a href="/profile">Perfil</a>
+                        </li>
+                        <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">
+                          <a href="/create-spot">Registo de vaga</a>
+                        </li>
+                        <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">
+                          <a href="/create-colaborator">Registo de utilizador</a>
+                        </li>
+                        <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">
+                          <a href="/spot-admin">Gestão de vaga</a>
+                        </li>
+                        <li className="cursor-pointer hover:bg-gray-100 p-2 rounded">
+                          <a href="/colaboratos-admin">Gestão de utilizador</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {isSidebarOpen && (
+                <div className="fixed inset-0 z-40 bg-black bg-opacity-50" onClick={handleSidebarToggle}></div>
+            )}
         </div>
-      )
+      );
 }
 
 export default Homepage
