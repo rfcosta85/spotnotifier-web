@@ -13,8 +13,6 @@ function CreateAdminUser() {
       password: '',
   })
 
-  console.log(formData)
-
   /**
  * handleChange - Função para atualizar o estado do formulário com base nas alterações nos campos de entrada.
  *

@@ -10,7 +10,6 @@ function EditPhone({setToken}) {
       email: '',
   })
 
-  console.log(formData)
 
   /**
  * handleChange - Função para atualizar o estado do formulário com base nas alterações nos campos de entrada.
@@ -58,7 +57,6 @@ function EditPhone({setToken}) {
         if (error) throw error
         setToken(data)
         navigate('/homepage')
-        console.log(data);
       } catch (error) {
           alert(error)
       }    
